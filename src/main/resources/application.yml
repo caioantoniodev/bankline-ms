@@ -9,7 +9,7 @@ spring:
   application:
     name: bankline-ms
   datasource:
-    url: jdbc:mysql://localhost:3306/bankline_ms?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/bankline_ms
     username: root
     password: root
   jpa:
