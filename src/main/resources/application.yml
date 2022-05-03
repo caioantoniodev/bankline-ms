@@ -1,1 +1,22 @@
-
+server:
+  port: ${PORT:8080}
+springdoc:
+  api-docs:
+    enabled: true
+spring:
+  main:
+    banner-mode: "off"
+  application:
+    name: bankline-ms
+  datasource:
+    url: jdbc:mysql://localhost:3306/bankline_ms
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+management:
+  endpoint:
+    health:
+      show-details: "ALWAYS"
