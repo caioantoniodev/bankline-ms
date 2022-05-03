@@ -1,4 +1,4 @@
-package edu.studyzone.bankline.ms;
+package edu.studyzone.banklinems;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
