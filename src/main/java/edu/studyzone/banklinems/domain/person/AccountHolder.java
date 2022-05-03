@@ -5,7 +5,7 @@ import edu.studyzone.banklinems.domain.account.BankAccount;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tab_bank_holder")
+@Table(name = "tab_account_holder")
 public class AccountHolder {
 
     @Id

@@ -22,6 +22,9 @@ public class Charge {
     @Enumerated(EnumType.STRING)
     private ChargeType chargeType;
 
+    @Column(name = "bank_account_id")
+    private Integer bankAccountId;
+
     public Integer getId() {
         return id;
     }
@@ -60,5 +63,13 @@ public class Charge {
 
     public void setChargeType(ChargeType chargeType) {
         this.chargeType = chargeType;
+    }
+
+    public Integer getBankAccountId() {
+        return bankAccountId;
+    }
+
+    public void setBankAccountId(Integer bankAccountId) {
+        this.bankAccountId = bankAccountId;
     }
 }
