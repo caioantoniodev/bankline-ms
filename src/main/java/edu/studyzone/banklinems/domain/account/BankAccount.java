@@ -20,15 +20,7 @@ public class BankAccount {
         return number;
     }
 
-    public void setNumber(Long number) {
-        this.number = number;
-    }
-
     public BigDecimal getBalance() {
         return balance;
-    }
-
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
     }
 }
