@@ -3,6 +3,7 @@ package edu.studyzone.banklinems.application.dto.person;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class AccountHolderResponse {
+
     private Integer id;
     private String name;
     @JsonProperty("bank_number")

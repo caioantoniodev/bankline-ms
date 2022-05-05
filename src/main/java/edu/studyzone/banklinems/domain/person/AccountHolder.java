@@ -36,4 +36,37 @@ public class AccountHolder {
     public BankAccount getBankAccount() {
         return bankAccount;
     }
+
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private String cpf;
+        private String name;
+        private BankAccount bankAccount;
+
+        public Builder withCpf(String cpf) {
+            this.cpf = cpf;
+            return this;
+        }
+
+        public Builder withName(String name) {
+            this.name = name;
+            return this;
+        }
+
+        public Builder withBankAccount(BankAccount bankAccount) {
+            this.bankAccount = bankAccount;
+            return this;
+        }
+
+        public AccountHolder build() {
+            AccountHolder accountHolder = new AccountHolder();
+            accountHolder.name = this.name;
+            accountHolder.cpf = this.cpf;
+            accountHolder.bankAccount = this.bankAccount;
+            return accountHolder;
+        }
+    }
 }
