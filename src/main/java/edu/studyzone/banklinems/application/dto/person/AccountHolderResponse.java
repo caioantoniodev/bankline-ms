@@ -1,11 +1,13 @@
 package edu.studyzone.banklinems.application.dto.person;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.commons.lang3.StringUtils;
 
 public class AccountHolderResponse {
 
     private Integer id;
     private String name;
+    private String cpf;
     @JsonProperty("bank_number")
     private Long bankNumber;
 
@@ -21,6 +23,10 @@ public class AccountHolderResponse {
         return bankNumber;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }
@@ -33,36 +39,18 @@ public class AccountHolderResponse {
         this.bankNumber = bankNumber;
     }
 
-    //    public static Builder builder() {
-//        return new Builder();
-//    }
-//
-//    public static final class Builder {
-//        private Integer id;
-//        private String name;
-//        private Long bankNumber;
-//
-//        public Builder withId(Integer id) {
-//            this.id = id;
-//            return this;
-//        }
-//
-//        public Builder withName(String name) {
-//            this.name = name;
-//            return this;
-//        }
-//
-//        public Builder withBankNumber(Long bankNumber) {
-//            this.bankNumber = bankNumber;
-//            return this;
-//        }
-//
-//        public AccountHolderResponse build() {
-//            AccountHolderResponse accountHolderResponse = new AccountHolderResponse();
-//            accountHolderResponse.id = this.id;
-//            accountHolderResponse.name = this.name;
-//            accountHolderResponse.bankNumber = this.bankNumber;
-//            return accountHolderResponse;
-//        }
-//    }
+    public void setCpf(String cpf) {
+        if (StringUtils.isNotBlank(cpf)) {
+            
+            cpf = StringUtils.leftPad(cpf, 11, '0');
+
+            this.cpf = cpf.substring(0, 3)
+                        .concat(".")
+                        .concat(cpf.substring(3, 6))
+                        .concat(".")
+                        .concat(cpf.substring(6, 9))
+                        .concat("/")
+                        .concat(cpf.substring(9, 11));
+        }
+    }
 }
