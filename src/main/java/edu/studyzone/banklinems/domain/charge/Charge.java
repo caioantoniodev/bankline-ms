@@ -29,47 +29,77 @@ public class Charge {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public LocalDateTime getChargeDateTime() {
         return chargeDateTime;
-    }
-
-    public void setChargeDateTime(LocalDateTime chargeDateTime) {
-        this.chargeDateTime = chargeDateTime;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public BigDecimal getValue() {
         return value;
-    }
-
-    public void setValue(BigDecimal value) {
-        this.value = value;
     }
 
     public ChargeType getChargeType() {
         return chargeType;
     }
 
-    public void setChargeType(ChargeType chargeType) {
-        this.chargeType = chargeType;
-    }
-
     public Integer getBankAccountId() {
         return bankAccountId;
     }
 
-    public void setBankAccountId(Integer bankAccountId) {
-        this.bankAccountId = bankAccountId;
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
+        private Integer id;
+        private LocalDateTime chargeDateTime;
+        private String description;
+        private BigDecimal value;
+        private ChargeType chargeType;
+        private Integer bankAccountId;
+
+        public Builder withId(Integer id) {
+            this.id = id;
+            return this;
+        }
+
+        public Builder withChargeDateTime(LocalDateTime chargeDateTime) {
+            this.chargeDateTime = chargeDateTime;
+            return this;
+        }
+
+        public Builder withDescription(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public Builder withValue(BigDecimal value) {
+            this.value = value;
+            return this;
+        }
+
+        public Builder withChargeType(ChargeType chargeType) {
+            this.chargeType = chargeType;
+            return this;
+        }
+
+        public Builder withBankAccountId(Integer bankAccountId) {
+            this.bankAccountId = bankAccountId;
+            return this;
+        }
+
+        public Charge build() {
+            Charge charge = new Charge();
+            charge.id = this.id;
+            charge.chargeType = this.chargeType;
+            charge.value = this.value;
+            charge.chargeDateTime = this.chargeDateTime;
+            charge.description = this.description;
+            charge.bankAccountId = this.bankAccountId;
+            return charge;
+        }
     }
 }
