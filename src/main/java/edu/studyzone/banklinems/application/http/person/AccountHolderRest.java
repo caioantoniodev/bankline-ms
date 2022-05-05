@@ -1,12 +1,12 @@
 package edu.studyzone.banklinems.application.http.person;
 
+import edu.studyzone.banklinems.application.dto.person.AccountHolderRequest;
 import edu.studyzone.banklinems.application.dto.person.AccountHolderResponse;
+import edu.studyzone.banklinems.application.usecase.person.CreateAccountHolder;
 import edu.studyzone.banklinems.application.usecase.person.FindAccountHolders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,9 +15,11 @@ import java.util.List;
 public class AccountHolderRest {
 
     private final FindAccountHolders findAccountHolders;
+    private final CreateAccountHolder createAccountHolder;
 
-    public AccountHolderRest(FindAccountHolders findAccountHolders) {
+    public AccountHolderRest(FindAccountHolders findAccountHolders, CreateAccountHolder createAccountHolder) {
         this.findAccountHolders = findAccountHolders;
+        this.createAccountHolder = createAccountHolder;
     }
 
     @GetMapping
@@ -27,5 +29,13 @@ public class AccountHolderRest {
         var accountHolderResponses = findAccountHolders.findAll(offSet, limit);
 
         return ResponseEntity.ok(accountHolderResponses);
+    }
+
+    @PostMapping
+    public ResponseEntity<AccountHolderResponse> create(@RequestBody AccountHolderRequest request) {
+
+        var payload = createAccountHolder.create(request);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(payload);
     }
 }

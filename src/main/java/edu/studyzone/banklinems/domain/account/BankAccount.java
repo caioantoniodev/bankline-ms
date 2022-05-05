@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Table;
 import java.math.BigDecimal;
+import java.util.Date;
 
 
 @Table(name = "tab_bank_account")
@@ -20,15 +21,33 @@ public class BankAccount {
         return number;
     }
 
-    public void setNumber(Long number) {
-        this.number = number;
-    }
-
     public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
+    public static BankAccountBuilder builder() {
+        return new BankAccountBuilder();
+    }
+
+    public static final class BankAccountBuilder {
+        private Long number;
+        private BigDecimal balance;
+
+        public BankAccountBuilder withNumber() {
+            this.number = new Date().getTime();
+            return this;
+        }
+
+        public BankAccountBuilder withBalance() {
+            this.balance = new BigDecimal("0.0");
+            return this;
+        }
+
+        public BankAccount build() {
+            BankAccount bankAccount = new BankAccount();
+            bankAccount.balance = this.balance;
+            bankAccount.number = this.number;
+            return bankAccount;
+        }
     }
 }
