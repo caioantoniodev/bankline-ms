@@ -1,7 +1,7 @@
 package edu.studyzone.banklinems.application.usecase.person;
 
 import edu.studyzone.banklinems.application.dto.person.AccountHolderResponse;
-import edu.studyzone.banklinems.domain.query.OffsetLimitPageable;
+import edu.studyzone.banklinems.application.usecase.query.CreateQuery;
 import edu.studyzone.banklinems.structure.repository.person.AccountHolderRepository;
 import org.springframework.stereotype.Component;
 
@@ -12,14 +12,16 @@ import java.util.stream.Collectors;
 public class FindAccountHolders {
 
     private final AccountHolderRepository accountHolderRepository;
+    private final CreateQuery createQuery;
 
-    public FindAccountHolders(AccountHolderRepository accountHolderRepository) {
+    public FindAccountHolders(AccountHolderRepository accountHolderRepository, CreateQuery createQuery) {
         this.accountHolderRepository = accountHolderRepository;
+        this.createQuery = createQuery;
     }
 
     public List<AccountHolderResponse> findAll(Integer offset, Integer limit) {
 
-        var offsetLimitPageable = getOffsetLimitPageable(offset, limit);
+        var offsetLimitPageable = createQuery.getOffsetLimitPageable(offset, limit);
 
         var accountHolders = accountHolderRepository.findAll(offsetLimitPageable);
 
@@ -29,23 +31,10 @@ public class FindAccountHolders {
 
                     accountHolderResponse.setId(accountHolder.getId());
                     accountHolderResponse.setName(accountHolder.getName());
+                    accountHolderResponse.setCpf(accountHolder.getCpf());
                     accountHolderResponse.setBankNumber(accountHolder.getBankAccount().getNumber());
 
                     return accountHolderResponse;
                 }).collect(Collectors.toList());
-    }
-
-    private OffsetLimitPageable getOffsetLimitPageable(Integer offset, Integer limit) {
-
-        if (offset != null && limit == null)
-            return new OffsetLimitPageable(offset, 50);
-
-        if (limit != null && offset == null)
-            return new OffsetLimitPageable(0, limit);
-
-        if (limit != null && offset != null)
-            return new OffsetLimitPageable(offset, limit);
-
-        return new OffsetLimitPageable(0, 50);
     }
 }

@@ -47,7 +47,7 @@ public class AccountHolder {
         private BankAccount bankAccount;
 
         public Builder withCpf(String cpf) {
-            this.cpf = cpf;
+            this.cpf = cpf.replaceAll("[^0-9]", "");
             return this;
         }
 
