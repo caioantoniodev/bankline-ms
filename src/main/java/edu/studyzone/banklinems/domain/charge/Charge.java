@@ -54,20 +54,15 @@ public class Charge {
     }
 
     public static final class Builder {
-        private Integer id;
+
         private LocalDateTime chargeDateTime;
         private String description;
         private BigDecimal value;
         private ChargeType chargeType;
         private Integer bankAccountId;
 
-        public Builder withId(Integer id) {
-            this.id = id;
-            return this;
-        }
-
-        public Builder withChargeDateTime(LocalDateTime chargeDateTime) {
-            this.chargeDateTime = chargeDateTime;
+        public Builder withChargeDateTime() {
+            this.chargeDateTime = LocalDateTime.now();
             return this;
         }
 
@@ -93,7 +88,6 @@ public class Charge {
 
         public Charge build() {
             Charge charge = new Charge();
-            charge.id = this.id;
             charge.chargeType = this.chargeType;
             charge.value = this.value;
             charge.chargeDateTime = this.chargeDateTime;

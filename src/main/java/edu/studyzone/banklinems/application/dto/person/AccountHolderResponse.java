@@ -11,22 +11,6 @@ public class AccountHolderResponse {
     @JsonProperty("bank_number")
     private Long bankNumber;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Long getBankNumber() {
-        return bankNumber;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
     public void setId(Integer id) {
         this.id = id;
     }
@@ -41,7 +25,7 @@ public class AccountHolderResponse {
 
     public void setCpf(String cpf) {
         if (StringUtils.isNotBlank(cpf)) {
-            
+
             cpf = StringUtils.leftPad(cpf, 11, '0');
 
             this.cpf = cpf.substring(0, 3)
