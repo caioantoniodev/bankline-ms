@@ -24,11 +24,15 @@ public class FindAccountHolders {
         var accountHolders = accountHolderRepository.findAll(offsetLimitPageable);
 
         return accountHolders.stream()
-                .map(accountHolder -> AccountHolderResponse.builder()
-                        .withId(accountHolder.getId())
-                        .withName(accountHolder.getName())
-                        .withBankNumber(accountHolder.getBankAccount().getNumber())
-                        .build()).collect(Collectors.toList());
+                .map(accountHolder -> {
+                    var accountHolderResponse = new AccountHolderResponse();
+
+                    accountHolderResponse.setId(accountHolder.getId());
+                    accountHolderResponse.setName(accountHolder.getName());
+                    accountHolderResponse.setBankNumber(accountHolder.getBankAccount().getNumber());
+
+                    return accountHolderResponse;
+                }).collect(Collectors.toList());
     }
 
     private OffsetLimitPageable getOffsetLimitPageable(Integer offset, Integer limit) {
