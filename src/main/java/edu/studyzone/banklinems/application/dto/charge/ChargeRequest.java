@@ -7,14 +7,14 @@ import java.math.BigDecimal;
 
 public class ChargeRequest {
 
+    @JsonProperty("description")
     private String description;
+    @JsonProperty("value")
     private BigDecimal value;
-
     @JsonProperty("charge_type")
     private ChargeType chargeType;
-
-    @JsonProperty("bank_account_id")
-    private Integer bankAccountId;
+    @JsonProperty("account_holder_id")
+    private Integer accountHolderId;
 
     public String getDescription() {
         return description;
@@ -28,7 +28,7 @@ public class ChargeRequest {
         return chargeType;
     }
 
-    public Integer getBankAccountId() {
-        return bankAccountId;
+    public Integer getAccountHolderId() {
+        return accountHolderId;
     }
 }

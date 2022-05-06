@@ -32,7 +32,7 @@ public class FindAccountHolders {
                     accountHolderResponse.setId(accountHolder.getId());
                     accountHolderResponse.setName(accountHolder.getName());
                     accountHolderResponse.setCpf(accountHolder.getCpf());
-                    accountHolderResponse.setBankNumber(accountHolder.getBankAccount().getNumber());
+                    accountHolderResponse.setBankAccount(accountHolder.getBankAccount());
 
                     return accountHolderResponse;
                 }).collect(Collectors.toList());

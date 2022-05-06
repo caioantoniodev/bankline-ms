@@ -25,6 +25,10 @@ public class BankAccount {
         return balance;
     }
 
+    public void updateBalance(BigDecimal value) {
+        this.balance = this.balance.add(value);
+    }
+
     public static BankAccountBuilder builder() {
         return new BankAccountBuilder();
     }

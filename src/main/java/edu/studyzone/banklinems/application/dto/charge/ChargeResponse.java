@@ -10,18 +10,14 @@ public class ChargeResponse {
 
     @JsonProperty("description")
     private String description;
-
     @JsonProperty("value")
     private BigDecimal value;
-
     @JsonProperty("charge_date_time")
     private LocalDateTime chargeDateTime;
-
     @JsonProperty("charge_type")
     private ChargeType chargeType;
-
-    @JsonProperty("bank_account_id")
-    private Integer bankAccountId;
+    @JsonProperty("account_holder_id")
+    private Integer accountHolderId;
 
     public void setDescription(String description) {
         this.description = description;
@@ -39,7 +35,7 @@ public class ChargeResponse {
         this.chargeType = chargeType;
     }
 
-    public void setBankAccountId(Integer bankAccountId) {
-        this.bankAccountId = bankAccountId;
+    public void setAccountHolderId(Integer accountHolderId) {
+        this.accountHolderId = accountHolderId;
     }
 }

@@ -36,7 +36,7 @@ public class CreateAccountHolder {
         accountHolderResponse.setId(accountHolder.getId());
         accountHolderResponse.setName(accountHolder.getName());
         accountHolderResponse.setCpf(accountHolder.getCpf());
-        accountHolderResponse.setBankNumber(bankAccount.getNumber());
+        accountHolderResponse.setBankAccount(bankAccount);
 
         return accountHolderResponse;
     }
