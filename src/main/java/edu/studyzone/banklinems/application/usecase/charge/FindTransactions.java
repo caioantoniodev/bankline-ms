@@ -30,7 +30,7 @@ public class FindTransactions {
                     var chargeResponse = new ChargeResponse();
 
                     chargeResponse.setValue(charge.getValue());
-                    chargeResponse.setBankAccountId(charge.getBankAccountId());
+                    chargeResponse.setAccountHolderId(charge.getAccountHolderId());
                     chargeResponse.setChargeType(charge.getChargeType());
                     chargeResponse.setDescription(charge.getDescription());
                     chargeResponse.setChargeDateTime(charge.getChargeDateTime());
