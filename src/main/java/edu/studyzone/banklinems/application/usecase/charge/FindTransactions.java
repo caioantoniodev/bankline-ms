@@ -2,7 +2,7 @@ package edu.studyzone.banklinems.application.usecase.charge;
 
 import edu.studyzone.banklinems.application.dto.charge.ChargeResponse;
 import edu.studyzone.banklinems.application.usecase.query.CreateQuery;
-import edu.studyzone.banklinems.structure.repository.charge.ChargeRepository;
+import edu.studyzone.banklinems.infra.repository.charge.ChargeRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

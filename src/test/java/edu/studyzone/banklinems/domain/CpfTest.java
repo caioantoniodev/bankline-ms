@@ -1,4 +1,4 @@
-package edu.studyzone.banklinems.response;
+package edu.studyzone.banklinems.domain;
 
 import edu.studyzone.banklinems.application.dto.person.AccountHolderResponse;
 import edu.studyzone.banklinems.domain.person.AccountHolder;

@@ -1,4 +1,4 @@
-package edu.studyzone.banklinems.structure.repository.person;
+package edu.studyzone.banklinems.infra.repository.person;
 
 import edu.studyzone.banklinems.domain.person.AccountHolder;
 import org.springframework.data.jpa.repository.JpaRepository;
