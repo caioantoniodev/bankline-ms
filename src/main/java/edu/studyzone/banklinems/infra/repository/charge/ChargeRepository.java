@@ -1,4 +1,4 @@
-package edu.studyzone.banklinems.structure.repository.charge;
+package edu.studyzone.banklinems.infra.repository.charge;
 
 import edu.studyzone.banklinems.domain.charge.Charge;
 import org.springframework.data.jpa.repository.JpaRepository;

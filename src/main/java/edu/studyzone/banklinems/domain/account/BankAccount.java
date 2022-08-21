@@ -1,5 +1,7 @@
 package edu.studyzone.banklinems.domain.account;
 
+import edu.studyzone.banklinems.infra.exception.InsufficientBalanceException;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Table;
@@ -26,7 +28,11 @@ public class BankAccount {
     }
 
     public void updateBalance(BigDecimal value) {
-        this.balance = this.balance.add(value);
+        BigDecimal balanceValue = this.balance.add(value);
+
+        if (balanceValue.signum() == -1) throw new InsufficientBalanceException();
+
+        this.balance = balanceValue;
     }
 
     public static BankAccountBuilder builder() {

@@ -2,7 +2,7 @@ package edu.studyzone.banklinems.application.usecase.person;
 
 import edu.studyzone.banklinems.application.dto.person.AccountHolderResponse;
 import edu.studyzone.banklinems.application.usecase.query.CreateQuery;
-import edu.studyzone.banklinems.structure.repository.person.AccountHolderRepository;
+import edu.studyzone.banklinems.infra.repository.person.AccountHolderRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
