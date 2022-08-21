@@ -27,18 +27,17 @@ public class AccountHolderResponse {
         this.bankAccount = bankAccount;
     }
 
+    public String getCpf() {
+        return cpf;
+    }
+
     public void setCpf(String cpf) {
         if (StringUtils.isNotBlank(cpf)) {
 
             cpf = StringUtils.leftPad(cpf, 11, '0');
 
-            this.cpf = cpf.substring(0, 3)
-                        .concat(".")
-                        .concat(cpf.substring(3, 6))
-                        .concat(".")
-                        .concat(cpf.substring(6, 9))
-                        .concat("/")
-                        .concat(cpf.substring(9, 11));
+            this.cpf = String.format("%s.%s.%s/%s", cpf.substring(0, 3), cpf.substring(3, 6),
+                    cpf.substring(6, 9), cpf.substring(9, 11));
         }
     }
 }
