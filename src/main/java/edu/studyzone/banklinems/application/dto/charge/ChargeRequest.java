@@ -16,10 +16,7 @@ public class ChargeRequest {
     @JsonProperty("value")
     @DecimalMin(value = "1.0", message = "Should be greater than 0.0.")
     private BigDecimal value;
-    @JsonProperty("charge_type")
-    private String chargeType;
-    @JsonProperty("account_number")
-    private Long accountNumber;
+
     @NotBlank(message = "Should be 'revenue' or 'expense'.")
     private String chargeType;
 

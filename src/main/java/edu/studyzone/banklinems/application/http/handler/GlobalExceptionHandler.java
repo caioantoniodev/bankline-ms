@@ -64,8 +64,6 @@ public class GlobalExceptionHandler {
                 .map(fieldError -> String.format("[%s] %s", fieldError.getField(), fieldError.getDefaultMessage()))
                 .collect(Collectors.toList());
     }
-//    ex.getBindingResult().getFieldErrors().get(0).getField()
-//                    ex.getBindingResult().getFieldErrors().forEach(field -> String.format("[%s] %s", field.getField(), message.getDefaultMessage()))
 
     private ResponseEntity<ErrorResponse> createBodyResponseError(Exception exception, final ErrorResponse error,
                                                                   HttpStatus httpStatus) {
