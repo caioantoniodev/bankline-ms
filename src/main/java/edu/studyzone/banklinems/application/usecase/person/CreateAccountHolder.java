@@ -2,6 +2,7 @@ package edu.studyzone.banklinems.application.usecase.person;
 
 import edu.studyzone.banklinems.application.dto.person.AccountHolderRequest;
 import edu.studyzone.banklinems.application.dto.person.AccountHolderResponse;
+import edu.studyzone.banklinems.application.dto.person.BankAccountResponse;
 import edu.studyzone.banklinems.domain.account.BankAccount;
 import edu.studyzone.banklinems.domain.person.AccountHolder;
 import edu.studyzone.banklinems.infra.repository.person.AccountHolderRepository;
@@ -31,12 +32,18 @@ public class CreateAccountHolder {
 
         accountHolderRepository.save(accountHolder);
 
+        var bankAccountResponse = new BankAccountResponse();
+
+        bankAccountResponse.setAccountNumber(accountHolder.getBankAccount().getAccountNumber());
+        bankAccountResponse.setBalance(accountHolder.getBankAccount().getBalance());
+
         var accountHolderResponse = new AccountHolderResponse();
 
         accountHolderResponse.setId(accountHolder.getId());
         accountHolderResponse.setName(accountHolder.getName());
         accountHolderResponse.setCpf(accountHolder.getCpf());
-        accountHolderResponse.setBankAccount(bankAccount);
+
+        accountHolderResponse.setBankAccount(bankAccountResponse);
 
         return accountHolderResponse;
     }

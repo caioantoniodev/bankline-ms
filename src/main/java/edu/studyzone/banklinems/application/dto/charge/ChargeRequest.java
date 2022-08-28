@@ -1,7 +1,6 @@
 package edu.studyzone.banklinems.application.dto.charge;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import edu.studyzone.banklinems.domain.charge.ChargeType;
 
 import java.math.BigDecimal;
 
@@ -12,9 +11,9 @@ public class ChargeRequest {
     @JsonProperty("value")
     private BigDecimal value;
     @JsonProperty("charge_type")
-    private ChargeType chargeType;
-    @JsonProperty("account_holder_id")
-    private Integer accountHolderId;
+    private String chargeType;
+    @JsonProperty("account_number")
+    private Long accountNumber;
 
     public String getDescription() {
         return description;
@@ -24,11 +23,11 @@ public class ChargeRequest {
         return value;
     }
 
-    public ChargeType getChargeType() {
+    public String getChargeType() {
         return chargeType;
     }
 
-    public Integer getAccountHolderId() {
-        return accountHolderId;
+    public Long getAccountNumber() {
+        return accountNumber;
     }
 }

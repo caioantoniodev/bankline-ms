@@ -16,8 +16,8 @@ public class ChargeResponse {
     private LocalDateTime chargeDateTime;
     @JsonProperty("charge_type")
     private ChargeType chargeType;
-    @JsonProperty("account_holder_id")
-    private Integer accountHolderId;
+    @JsonProperty("account_number")
+    private Long accountNumber;
 
     public void setDescription(String description) {
         this.description = description;
@@ -35,7 +35,7 @@ public class ChargeResponse {
         this.chargeType = chargeType;
     }
 
-    public void setAccountHolderId(Integer accountHolderId) {
-        this.accountHolderId = accountHolderId;
+    public void setAccountNumber(Long accountNumber) {
+        this.accountNumber = accountNumber;
     }
 }
