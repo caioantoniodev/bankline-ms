@@ -6,8 +6,9 @@ public class ExceptionCodes {
     }
 
     public static final String GENERIC_BASE_ERROR = "ERR000";
-    public static final String GENERIC_UNKNOWN_ERROR = "ERR001";
-    public static final String GENERIC_INSUFFICIENT_BALANCE_EXCEPTION = "INBALEX002";
+    public static final String GENERIC_BAD_REQUEST_EXCEPTION = "BANKERR001";
+    public static final String GENERIC_INSUFFICIENT_BALANCE_EXCEPTION = "BANKERR002";
+    public static final String GENERIC_CHARGE_TYPE_NOT_FOUND = "BANKERR003";
     public static final String GENERIC_TIME_OUT_ERROR = "ERR003";
     public static final String GENERIC_SERVICE_UNAVAILABLE_ERROR = "ERR004";
     public static final String GENERIC_INTERNAL_SERVER_ERROR = "ERR005";

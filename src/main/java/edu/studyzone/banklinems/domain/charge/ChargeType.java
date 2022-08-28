@@ -1,5 +1,7 @@
 package edu.studyzone.banklinems.domain.charge;
 
+import edu.studyzone.banklinems.infra.exception.ChargeTypeNotFoundException;
+
 import java.util.Arrays;
 
 public enum ChargeType {
@@ -20,6 +22,6 @@ public enum ChargeType {
         return Arrays.stream(ChargeType.values())
                 .filter(type -> type.name().equalsIgnoreCase(chargeType))
                 .findFirst()
-                .orElseThrow(() -> new RuntimeException("Charge type not found"));
+                .orElseThrow(ChargeTypeNotFoundException::new);
     }
 }
