@@ -6,6 +6,7 @@ import edu.studyzone.banklinems.application.usecase.charge.CreateCharge;
 import edu.studyzone.banklinems.application.usecase.charge.FindTransactions;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class ChargeRest {
     }
 
     @PostMapping
-    public ResponseEntity<ChargeResponse> charge(@RequestBody ChargeRequest request) {
+    public ResponseEntity<ChargeResponse> charge(@RequestBody @Validated ChargeRequest request) {
 
         var payload = createCharge.charge(request);
 

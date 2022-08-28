@@ -25,16 +25,18 @@ public class CreateCharge {
 
     @Transactional
     public ChargeResponse charge(ChargeRequest request) {
-        var accountHolder = getAccountHolder(request);
+        var accountHolder = getAccountHolderByAccountNumber(request.getAccountNumber());
 
-        var transactionValue = buildTransactionValue(request.getChargeType(), request.getValue());
+        var chargeType = ChargeType.fromValue(request.getChargeType());
+
+        var transactionValue = buildTransactionValue(chargeType, request.getValue());
 
         var charge = Charge.builder()
                 .withValue(transactionValue)
                 .withDescription(request.getDescription())
-                .withChargeType(request.getChargeType())
+                .withChargeType(chargeType)
                 .withChargeDateTime()
-                .withAccountHolderId(request.getAccountHolderId())
+                .withAccountNumber(request.getAccountNumber())
                 .build();
 
         accountHolder.getBankAccount().updateBalance(transactionValue);
@@ -46,9 +48,9 @@ public class CreateCharge {
         return buildChargeResponse(charge);
     }
 
-    private AccountHolder getAccountHolder(ChargeRequest request) {
+    private AccountHolder getAccountHolderByAccountNumber(Long accountNumber) {
         var accountHolderOptional = accountHolderRepository
-                .findById(request.getAccountHolderId());
+                .findAccountHolderByBankAccountAccountNumber(accountNumber);
 
         if (accountHolderOptional.isEmpty())
             throw new RuntimeException("Account holder not exists");
@@ -66,7 +68,7 @@ public class CreateCharge {
         chargeResponse.setChargeDateTime(charge.getChargeDateTime());
         chargeResponse.setDescription(charge.getDescription());
         chargeResponse.setValue(charge.getValue());
-        chargeResponse.setAccountHolderId(charge.getAccountHolderId());
+        chargeResponse.setAccountNumber(charge.getAccountNumber());
         return chargeResponse;
     }
 }

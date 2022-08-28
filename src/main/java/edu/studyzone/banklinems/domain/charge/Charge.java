@@ -22,8 +22,8 @@ public class Charge {
     @Enumerated(EnumType.STRING)
     private ChargeType chargeType;
 
-    @Column(name = "account_holder_id")
-    private Integer accountHolderId;
+    @Column(name = "account_number")
+    private Long accountNumber;
 
     public Integer getId() {
         return id;
@@ -45,8 +45,8 @@ public class Charge {
         return chargeType;
     }
 
-    public Integer getAccountHolderId() {
-        return accountHolderId;
+    public Long getAccountNumber() {
+        return accountNumber;
     }
 
     public static Builder builder() {
@@ -59,7 +59,7 @@ public class Charge {
         private String description;
         private BigDecimal value;
         private ChargeType chargeType;
-        private Integer accountHolderId;
+        private Long accountNumber;
 
         public Builder withChargeDateTime() {
             this.chargeDateTime = LocalDateTime.now();
@@ -81,8 +81,8 @@ public class Charge {
             return this;
         }
 
-        public Builder withAccountHolderId(Integer accountHolderId) {
-            this.accountHolderId = accountHolderId;
+        public Builder withAccountNumber(Long accountHolderId) {
+            this.accountNumber = accountHolderId;
             return this;
         }
 
@@ -92,7 +92,7 @@ public class Charge {
             charge.value = this.value;
             charge.chargeDateTime = this.chargeDateTime;
             charge.description = this.description;
-            charge.accountHolderId = this.accountHolderId;
+            charge.accountNumber = this.accountNumber;
             return charge;
         }
     }
