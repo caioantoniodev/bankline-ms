@@ -1,7 +1,6 @@
 package edu.studyzone.banklinems.application.dto.person;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import edu.studyzone.banklinems.domain.account.BankAccount;
 import org.apache.commons.lang3.StringUtils;
 
 public class AccountHolderResponse {
@@ -13,7 +12,7 @@ public class AccountHolderResponse {
     @JsonProperty("cpf")
     private String cpf;
     @JsonProperty("bank_account")
-    private BankAccount bankAccount;
+    private BankAccountResponse bankAccount;
 
     public void setId(Integer id) {
         this.id = id;
@@ -23,7 +22,7 @@ public class AccountHolderResponse {
         this.name = name;
     }
 
-    public void setBankAccount(BankAccount bankAccount) {
+    public void setBankAccount(BankAccountResponse bankAccount) {
         this.bankAccount = bankAccount;
     }
 
@@ -41,3 +40,4 @@ public class AccountHolderResponse {
         }
     }
 }
+

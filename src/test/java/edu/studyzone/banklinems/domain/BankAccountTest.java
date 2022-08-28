@@ -32,7 +32,7 @@ public class BankAccountTest {
     void shouldReturnNumberAccountAfterCreateBankAccount() {
         BankAccount bankAccount = BankAccount.builder().withNumber().build();
 
-        Assertions.assertNotNull(bankAccount.getNumber());
+        Assertions.assertNotNull(bankAccount.getAccountNumber());
     }
 
     @Test

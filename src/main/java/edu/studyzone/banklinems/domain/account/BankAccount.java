@@ -4,23 +4,20 @@ import edu.studyzone.banklinems.infra.exception.InsufficientBalanceException;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.util.Date;
 
-
-@Table(name = "tab_bank_account")
 @Embeddable
 public class BankAccount {
 
-    @Column(name = "bank_number")
-    private Long number;
+    @Column(name = "account_number")
+    private Long accountNumber;
 
-    @Column(name = "bank_balance")
+    @Column(name = "account_balance")
     private BigDecimal balance;
 
-    public Long getNumber() {
-        return number;
+    public Long getAccountNumber() {
+        return accountNumber;
     }
 
     public BigDecimal getBalance() {
@@ -40,11 +37,11 @@ public class BankAccount {
     }
 
     public static final class BankAccountBuilder {
-        private Long number;
+        private Long accountNumber;
         private BigDecimal balance;
 
         public BankAccountBuilder withNumber() {
-            this.number = new Date().getTime();
+            this.accountNumber = new Date().getTime();
             return this;
         }
 
@@ -56,7 +53,7 @@ public class BankAccount {
         public BankAccount build() {
             BankAccount bankAccount = new BankAccount();
             bankAccount.balance = this.balance;
-            bankAccount.number = this.number;
+            bankAccount.accountNumber = this.accountNumber;
             return bankAccount;
         }
     }
