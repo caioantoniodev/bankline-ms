@@ -21,7 +21,7 @@ public class FindTransactions {
 
     public List<ChargeResponse> findAll(Integer offset, Integer limit) {
 
-        var offsetLimitPageable = createQuery.getOffsetLimitPageable(offset, limit);
+        var offsetLimitPageable = createQuery.getOffsetLimitPageable(offset > 0 ? offset - 1 : 0, limit);
 
         var accountHolders = chargeRepository.findAll(offsetLimitPageable);
 
