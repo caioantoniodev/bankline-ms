@@ -1,1 +1,1 @@
-# Bankline Management Endpoints
+# Bankline management endpoints
